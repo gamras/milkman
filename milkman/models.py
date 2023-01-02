@@ -7,22 +7,22 @@ class Customer(models.Model):
     address = models.CharField(max_length=300, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} - {self.address} ({self.phone})'
 
 
 class Product(models.Model):
     name = models.CharField(max_length=200)
-    price = models.IntegerField()
+    price = models.DecimalField(decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} - {self.price}'
 
 
 class Sale(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.DecimalField(decimal_places=2)
 
     def __str__(self):
         return f"{self.customer} - {self.product} - {self.quantity} - {self.created_at.date()}"
@@ -32,3 +32,7 @@ class Purchase(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.DecimalField(decimal_places=2)
+
+    def __str__(self):
+        return f"{self.customer} - {self.product} - {self.quantity} - {self.created_at.date()}"
