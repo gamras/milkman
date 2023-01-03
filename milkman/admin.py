@@ -4,5 +4,12 @@ from .models import Customer, Product, Sale, Purchase
 
 admin.site.register(Customer)
 admin.site.register(Product)
-admin.site.register(Sale)
 admin.site.register(Purchase)
+
+
+class SaleAdmin(admin.ModelAdmin):
+    list_display = ('created_at', 'customer', 'product', 'quantity')
+    list_filter = ['created_at']
+    search_fields = ['customer']
+
+admin.site.register(Sale, SaleAdmin)
