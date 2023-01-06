@@ -21,8 +21,8 @@ class Product(models.Model):
 class Sale(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    cow_milk_quantity = models.DecimalField(max_digits=10, decimal_places=2)
+    buffalo_milk_quantity = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"{self.customer} - {self.product} - {self.quantity} - {self.created_at.date()}"
