@@ -8,7 +8,7 @@ admin.site.register(Purchase)
 
 
 class SaleAdmin(admin.ModelAdmin):
-    list_display = ('created_at', 'customer', 'product', 'quantity')
+    list_display = ('created_at', 'customer', 'cow_milk_quantity', 'buffalo_milk_quantity')
     list_filter = ['created_at']
     search_fields = ['customer']
 
